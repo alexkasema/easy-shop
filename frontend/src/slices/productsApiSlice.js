@@ -1,4 +1,6 @@
 import { PRODUCTS_URL } from "../constants";
+
+//! because we have endpoint s that are dealing with asynchronous requests
 import { apiSlice } from "./apiSlice";
 
 export const productApiSlice = apiSlice.injectEndpoints({
