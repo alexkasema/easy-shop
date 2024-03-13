@@ -15,7 +15,12 @@ const port = process.env.PORT || 5000 ;
 connectDB();
 
 const app = express();
+
 app.use(cors());
+
+//! Body Parser Middleware
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 
 app.get('/', (req, res) => {
