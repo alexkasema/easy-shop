@@ -1,3 +1,5 @@
+//!This section is for the server side
+
 import { USERS_URL } from "../constants";
 
 //! because we have endpoint s that are dealing with asynchronous requests
@@ -12,7 +14,13 @@ export const usersApiSlice = apiSlice.injectEndpoints({
                 body: data
             }),
         }),
+        logout: builder.mutation({
+            query: () => ({
+                url: `${USERS_URL}/logout`,
+                method: 'POST',
+            }),
+        }),
     }),
 });
 
-export const { useLoginMutation } = usersApiSlice;
+export const { useLoginMutation, useLogoutMutation } = usersApiSlice;
