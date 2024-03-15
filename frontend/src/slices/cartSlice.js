@@ -31,11 +31,15 @@ const cartSlice = createSlice({
         saveShippingAddress: (state, action) => {
             state.shippingAddress = action.payload;
             return updateCart(state);
-        }
+        },
+        savePaymentMethod: (state, action) => {
+            state.paymentMethod = action.payload;
+            return updateCart(state);
+        },
     }, 
 });
 
 //? Then we need to export addToCart function as an ACTION
-export const { addToCart, removeFromCart, saveShippingAddress } = cartSlice.actions;
+export const { addToCart, removeFromCart, saveShippingAddress, savePaymentMethod } = cartSlice.actions;
 
 export default cartSlice.reducer;
