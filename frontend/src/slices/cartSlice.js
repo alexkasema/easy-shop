@@ -44,6 +44,6 @@ const cartSlice = createSlice({
 });
 
 //? Then we need to export addToCart function as an ACTION
-export const { addToCart, removeFromCart, saveShippingAddress, savePaymentMethod, clearCartItems } = cartSlice.actions;
+export const { addToCart, removeFromCart, saveShippingAddress, savePaymentMethod, clearCartItems, } = cartSlice.actions;
 
 export default cartSlice.reducer;

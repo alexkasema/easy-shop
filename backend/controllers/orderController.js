@@ -11,8 +11,8 @@ const addOrderItems = asyncHandler(async (req, res) => {
         shippingAddress,
         paymentMethod,
         itemsPrice,
-        taxPrice,
         shippingPrice,
+        taxPrice,
         totalPrice,
     } = req.body;
 
@@ -21,8 +21,10 @@ const addOrderItems = asyncHandler(async (req, res) => {
         throw new Error('No order items');
     } else {
         const order = new Order({
-            orderItems: orderItems.map((item) => ({
-                ...x, product: item._id, _id: undefined
+            orderItems: orderItems.map((x) => ({
+                ...x,
+                product: x._id,
+                _id: undefined,
             })),
             user: req.user._id,
             shippingAddress,
@@ -34,13 +36,12 @@ const addOrderItems = asyncHandler(async (req, res) => {
         });
 
         const createdOrder = await order.save();
-
         res.status(201).json(createdOrder);
     }
 });
 
 // @desc Get logged in user orders
-// @route Get /api/orders/myorders
+// @route Get /api/orders/mine
 // @access Private
 const getMyOrders = asyncHandler(async (req, res) => {
     const orders = await Order.find({ user: req.user._id });

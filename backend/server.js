@@ -18,7 +18,7 @@ connectDB();
 
 const app = express();
 
-app.use(cors());
+// app.use(cors());
 
 //! Body Parser Middleware
 app.use(express.json());

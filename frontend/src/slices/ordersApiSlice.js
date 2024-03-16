@@ -10,7 +10,7 @@ export const ordersApiSlice = apiSlice.injectEndpoints({
                 body: {...order}
             })
         })
-    })
+    }),
 });
 
 export const { useCreateOrderMutation } = ordersApiSlice;
