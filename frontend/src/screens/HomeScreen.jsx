@@ -11,9 +11,9 @@ import { useGetProductsQuery } from '../slices/productsApiSlice.js';
 const HomeScreen = () => {
 
     //! get the page number from the url
-    const { pageNumber } = useParams();
+    const { pageNumber, keyword } = useParams();
     
-    const { data, isLoading, error } = useGetProductsQuery({pageNumber});
+    const { data, isLoading, error } = useGetProductsQuery({keyword, pageNumber});
 
     return (
         <>
@@ -32,7 +32,8 @@ const HomeScreen = () => {
                 </Row>
                 <Paginate
                     pages={data.pages}
-                    page={data.page} />
+                    page={data.page}
+                    keyword={keyword ? keyword : ''} />
             </>)}
             
         </>
