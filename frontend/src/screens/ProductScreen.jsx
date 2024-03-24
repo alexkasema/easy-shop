@@ -5,6 +5,7 @@ import { Row, Col, Image, ListGroup, Card, Button, Form} from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
 
+import Meta from '../components/Meta.jsx';
 import Rating from "../components/Rating";
 import Loader from "../components/Loader";
 import Message from '../components/Message.jsx';
@@ -67,6 +68,7 @@ const ProductScreen = () => {
                 ) : error ? (
                 <Message variant='danger'>{ error?.data?.message || error.error }</Message>) : (
                 <>
+                <Meta title={product.name} />
                 <Row>
                 <Col md={5}>
                     <Image src={product.image} alt={product.name} fluid/>
