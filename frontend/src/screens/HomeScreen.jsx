@@ -1,5 +1,6 @@
 import { Row, Col } from 'react-bootstrap';
 import { useParams } from 'react-router-dom';
+import Paginate from '../components/Paginate.jsx';
 import Product from '../components/Product';
 import Loader from '../components/Loader.jsx';
 import Message from '../components/Message.jsx';
@@ -29,6 +30,9 @@ const HomeScreen = () => {
                         )
                     })}
                 </Row>
+                <Paginate
+                    pages={data.pages}
+                    page={data.page} />
             </>)}
             
         </>
