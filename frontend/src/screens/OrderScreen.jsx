@@ -54,7 +54,7 @@ const OrderScreen = () => {
     function onApprove(data, actions) {
         return actions.order.capture().then(async function (details) {
             try {
-                await payOrder({orderId, details});
+                await payOrder({orderId, details}).unwrap();
                 refetch(); //! this will update the user interface to paid
                 toast.success('Payment successful');
             } catch (error) {
@@ -98,7 +98,7 @@ const OrderScreen = () => {
     }
 
     return isLoading ? <Loader /> : 
-        error ? <Message variant='danger'>{error?.message}</Message> : (
+        error ? <Message variant='danger'>{error?.data?.message || error.error}</Message> : (
             <>
                 <h1>Order {order._id}</h1>
                 <Row>
